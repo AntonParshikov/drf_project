@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework_simplejwt',
     'django_filters',
     'drf_yasg',
     'corsheaders',
@@ -163,9 +164,14 @@ CELERY_TIMEZONE = 'Europe/Moscow'
 
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
-        'task': 'course.tasks.check_user',
+        'task': 'education.tasks.check_user',
         'schedule': timedelta(minutes=1),
     },
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
